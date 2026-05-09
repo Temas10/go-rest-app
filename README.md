@@ -1,73 +1,32 @@
-# React + TypeScript + Vite
+# GoRest Interactive Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Современное веб-приложение для взаимодействия с REST API GoRest, разработанное с использованием стека React + TypeScript и корпоративной дизайн-системы Consta UI. Проект предоставляет удобный интерфейс для просмотра, навигации и работы с данными пользователей и постов.
 
-Currently, two official plugins are available:
+## 📋 О проекте
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Данное приложение представляет собой клиентскую панель управления, которая позволяет авторизоваться через Access Token, просматривать списки пользователей и постов в табличном виде с гибкой пагинацией, а также переходить на детальные страницы объектов. Стилизация интерфейса выполнена с использованием компонентного подхода Consta UI, что обеспечивает консистентный и современный внешний вид.
 
-## React Compiler
+## ✨ Ключевые возможности
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Авторизация и валидация**: Поле ввода Access Token с валидацией на пустоту. Токен сохраняется в глобальном состоянии и используется для доступа к API.
+- **Режимы отображения**: Переключение между списком пользователей и списком постов с помощью навигационных кнопок в шапке приложения.
+- **Таблица пользователей**: Отображает Имя, Фамилию (программно разделяются из единого поля `name` API) и Email.
+- **Таблица постов**: Отображает ID и Заголовок поста.
+- **Гибкая пагинация**:
+  - Кнопки «Предыдущая» / «Следующая».
+  - Навигация по номерам страниц.
+  - Выбор количества элементов на странице (10, 25, 50).
+- **Детальные страницы**: Клик по строке таблицы открывает карточку объекта.
+  - Карточка пользователя: Подробная информация о профиле.
+  - Карточка поста: Текст поста и полный список комментариев к нему.
+- **Навигация**: Возможность возврата к списку из детальной карточки.
 
-## Expanding the ESLint configuration
+## 🛠 Технологический стек
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- Язык: TypeScript
+- Фреймворк: React (сборщик Vite)
+- UI Библиотека: Consta UI (`@consta/uikit`, `@consta/icons`)
+- Управление состоянием: Zustand
+- Маршрутизация: React Router v6
+- HTTP-клиент: Axios
+- Контейнеризация: Docker, Nginx (Multi-stage build)

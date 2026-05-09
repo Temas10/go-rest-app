@@ -9,7 +9,6 @@ export const HomePage: React.FC = () => {
   const { token } = useStore();
   const location = useLocation();
   
-  // Определяем режим на основе URL
   const mode = location.pathname === '/posts' ? 'posts' : 'users';
 
   if (!token) {

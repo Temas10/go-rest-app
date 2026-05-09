@@ -9,7 +9,6 @@ body {
   min-height: 100vh;
 }
 
-/* Исправление стилей Consta для корректной работы ширины таблиц */
 .Table { width: 100% !important; }
 .Table-Tr { width: 100% !important; }
 .Table-Td { word-break: break-word; }
